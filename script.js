@@ -8,13 +8,13 @@ function createGrid(size) {
     const containerSize = 400;
     const squareSize = containerSize / size;
 
-    for (let i = 0; i < size; i++) {
+     
+    for (let i = 0; i < size * size; i++) {
         const square = document.createElement('div');
         square.classList.add('square');
-
         square.style.width = squareSize + 'px';
         square.style.height = squareSize + 'px';
-
+        square.style.border = '2px solid black';
         gridContainer.appendChild(square);
     }
 }
@@ -26,3 +26,10 @@ slider.oninput = function() {
     number.textContent = slider.value;
 }
 
+// Update the grid and slider value dynamically
+slider.addEventListener("input", () => {
+    const gridSize = parseInt(slider.value, 10);
+    number.textContent = gridSize; // Update the number display
+    createGrid(gridSize); // Generate the grid
+});
+createGrid(parseInt(slider.value, 10));
