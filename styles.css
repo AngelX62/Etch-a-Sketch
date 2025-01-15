@@ -13,11 +13,46 @@ body {
 
 #sliderContainer {
   display: flex;
-  transform: translate(-50%, -50%);
   align-items: center;
   justify-content: space-around;
-  padding: 0 15px;
- 
+  padding: 0 30px;
+  gap: 20px;
+}
+
+
+.square {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  border: 2px solid black;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+#number {
+  background-color: purple;
+  height: 40px;
+  width: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  position: relative;
+  border-right: 20px;
+}
+
+#number::before {
+  position: absolute;
+  content: "";
+  height: 0;
+  width: 0;
+  border-bottom:10px solid purple;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  left: 95%;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
 }
 
 input[type="range"] {
@@ -43,34 +78,9 @@ input[type="range"]::-webkit-slider-thumb {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  width: 400px;
+  height: 400px;
+
 }
 
 
-.square {
-  width: 30px;
-  height: 30px;
-  border: 2px solid black;
-}
-
-#number {
-  background-color: purple;
-  height: 40px;
-  width: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 3px;
-  transform: rotate(90deg);
-  border-right: 20px;
-}
-
-#number:before {
-  position: absolute;
-  content: "";
-  height: 0;
-  width: 0;
-  border-bottom:10px solid yellow;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  top:-9px;
-}
