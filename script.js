@@ -15,21 +15,32 @@ function createGrid(size) {
         square.style.width = squareSize + 'px';
         square.style.height = squareSize + 'px';
         square.style.border = '2px solid black';
+        square.addEventListener('mouseover', () => {
+            square.style.backgroundColor = 'black';
+        });
         gridContainer.appendChild(square);
     }
 }
+function makeSlider() {
+    // Slider
+    const slider = document.querySelector("#slider");
+    const number = document.querySelector("#number");
+    slider.oninput = function() {
+        number.textContent = slider.value;
+    }
 
-// Slider
-const slider = document.querySelector("#slider");
-const number = document.querySelector("#number");
-slider.oninput = function() {
-    number.textContent = slider.value;
+    // Update the grid and slider value dynamically
+    slider.addEventListener("input", () => {
+        const gridSize = parseInt(slider.value, 10);
+        number.textContent = gridSize; // Update the number display
+        createGrid(gridSize); // Generate the grid
+    });
 }
 
-// Update the grid and slider value dynamically
-slider.addEventListener("input", () => {
-    const gridSize = parseInt(slider.value, 10);
-    number.textContent = gridSize; // Update the number display
-    createGrid(gridSize); // Generate the grid
-});
-createGrid(parseInt(slider.value, 10));
+document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.querySelector('#slider');
+    const initialSize = parseInt(slider.value, 10);
+    createGrid(initialSize);
+    makeSlider();
+})
+
