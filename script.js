@@ -1,3 +1,11 @@
+function randColor() {
+    const r = Math.random() * 256;
+    const g = Math.random() * 256;
+    const b = Math.random() * 256;
+
+    return `rgb(${r}, ${g}, ${b})`;
+}
+
 // Create divs of number of grid squares based on user input
 function createGrid(size) {
     const gridContainer = document.querySelector('#containerTwo');
@@ -14,26 +22,37 @@ function createGrid(size) {
         square.classList.add('square');
         square.style.width = squareSize + 'px';
         square.style.height = squareSize + 'px';
-        square.style.border = '2px solid black';
-        square.addEventListener('mouseover', () => {
-            square.style.backgroundColor = 'black';
+        square.style.border = '1px solid black';
+        square.addEventListener('mouseenter', () => {
+            square.style.backgroundColor = randColor();
         });
         gridContainer.appendChild(square);
     }
 }
+
 function makeSlider() {
     // Slider
     const slider = document.querySelector("#slider");
     const number = document.querySelector("#number");
-    slider.oninput = function() {
-        number.textContent = slider.value;
+    
+    function updateGrid(size) {
+        size = Math.max(1, Math.min(100, size));
+        slider.value = size;
+        gridInput.value = size;
+        number.textContent = size;
+        createGrid(size);
     }
 
-    // Update the grid and slider value dynamically
     slider.addEventListener("input", () => {
-        const gridSize = parseInt(slider.value, 10);
-        number.textContent = gridSize; // Update the number display
-        createGrid(gridSize); // Generate the grid
+        updateGrid(parseInt(slider.value, 10));
+    });
+
+    gridInput.addEventListener("keypress", function (e) {
+        if (e.key == "Enter") updateGrid(parseInt(gridInput.value, 10));
+    });
+
+    gridInput.addEventListener("change", function () {
+        updateGrid(parseInt(gridInput.value, 10));
     });
 }
 
