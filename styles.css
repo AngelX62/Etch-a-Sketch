@@ -1,6 +1,6 @@
 body {
   min-height: 100vh;
-  background-color: rgb(170, 107, 107);
+  background-color: rgb(65, 82, 85);
   justify-content: center;
 }
 
@@ -24,7 +24,7 @@ body {
   display: flex;
   width: 30px;
   height: 30px;
-  border: 2px solid black;
+  border: 2px solid rgb(0, 0, 0);
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
@@ -33,7 +33,7 @@ body {
 
 
 #number {
-  background-color: purple;
+  background-color: rgb(223, 97, 223);
   height: 40px;
   width: 70px;
   display: flex;
@@ -49,7 +49,7 @@ body {
   content: "";
   height: 0;
   width: 0;
-  border-bottom:10px solid purple;
+  border-bottom:10px solid rgb(223, 97, 223);
   border-left: 8px solid transparent;
   border-right: 8px solid transparent;
   left: 95%;
@@ -81,9 +81,9 @@ input[type="range"]::-webkit-slider-thumb {
   align-items: center;
   justify-content: center;
   margin: 200px auto 0 auto;
-  width: 400px;
-  height: 400px;
-  border: 20px solid red;
+  width: 500px;
+  height: 500px;
+  border: 20px solid rgb(182, 141, 236);
   border-radius: 20px;
 
 }
