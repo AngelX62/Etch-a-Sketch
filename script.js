@@ -39,6 +39,9 @@ function createGrid(size) {
 
     gridContainer.addEventListener('mousedown', () => {
         isDrawing = true;
+        if(e.target.classList.contains('square')) {
+            e.target.style.backgroundColor = randColor();
+        }
     })
 
     gridContainer.addEventListener('mouseup', () => {
